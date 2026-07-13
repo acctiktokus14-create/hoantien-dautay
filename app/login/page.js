@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { DEFAULT_THEME } from "../../lib/theme";
 
-const ZALO_GROUP_LINK = "https://zalo.me/g/msd7vvhjcwiffr3tyqor";
+const ZALO_GROUP_LINK = "https://zalo.me/g/9z3rc8twl2d8oss7ttn3";
 const MYID_COMMAND = "#My_ID";
 
 // Tên gợi nhớ chỉ lưu riêng trên từng điện thoại (localStorage), tách theo
@@ -49,6 +49,32 @@ function CuteCatIcon({ className = "" }) {
       <path d="M42 29 Q37 29 33 30" stroke="#fff" strokeWidth="1.2" strokeLinecap="round" opacity="0.8" />
       <ellipse cx="17" cy="16" rx="4" ry="3" fill="#fff" transform="rotate(-18 17 16)" />
       <circle cx="15.5" cy="15.5" r="1.4" fill="currentColor" />
+    </svg>
+  );
+}
+
+/* Icon dâu tây dễ thương — dùng làm điểm nhấn trước tiêu đề trang đăng nhập. */
+function StrawberryIcon({ className = "" }) {
+  return (
+    <svg viewBox="0 0 48 48" className={className} xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M24 14c-6 0-10.5 4.6-10.5 12.4C13.5 34.5 19 40 24 40s10.5-5.5 10.5-13.6C34.5 18.6 30 14 24 14Z"
+        fill="#e0417c"
+      />
+      <circle cx="18.5" cy="23" r="1.3" fill="#ffd9e6" />
+      <circle cx="24" cy="20" r="1.3" fill="#ffd9e6" />
+      <circle cx="29.5" cy="23" r="1.3" fill="#ffd9e6" />
+      <circle cx="21" cy="28" r="1.3" fill="#ffd9e6" />
+      <circle cx="27" cy="28" r="1.3" fill="#ffd9e6" />
+      <circle cx="24" cy="34" r="1.3" fill="#ffd9e6" />
+      <path
+        d="M24 15 L20 8 L24 10.5 L28 8 Z"
+        fill="#3fa54a"
+      />
+      <path
+        d="M17 10.5 Q24 6 31 10.5 Q24 13 17 10.5 Z"
+        fill="#4cbb5c"
+      />
     </svg>
   );
 }
@@ -195,18 +221,18 @@ export default function LoginPage() {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 mb-3">
             <div className="w-9 h-9 rounded-full bg-gold flex items-center justify-center shrink-0 shadow-md shadow-[var(--highlight)]/20">
-              <CuteCatIcon className="w-6 h-6 text-white" />
+              <StrawberryIcon className="w-6 h-6" />
             </div>
             <span className="font-display font-semibold text-lg tracking-tight">
-              Mua sắm hoàn tiền cùng Phương Thảo
+              Mua sắm hoàn tiền cùng Dâu Tây
             </span>
           </div>
           <p className="text-muted text-sm mb-3">Shop càng nhiều hoàn càng đã 🐾</p>
 
           {/* Badge trang trí pastel cho sinh động */}
           <div className="flex items-center justify-center flex-wrap gap-2">
-            <span className="text-[11px] font-bold px-2.5 py-1 rounded-full text-[#5a3d85] bg-[#c9a6f2]/35 border border-[#c9a6f2]/50">
-              💜 Hoàn tiền cao
+            <span className="text-[11px] font-bold px-2.5 py-1 rounded-full text-[#a13d70] bg-[#f2a6d6]/35 border border-[#f2a6d6]/50">
+              💗 Hoàn tiền cao
             </span>
             <span className="text-[11px] font-bold px-2.5 py-1 rounded-full text-[#1f5c7c] bg-[#9fd0f0]/35 border border-[#9fd0f0]/50">
               💙 Thanh toán nhanh
@@ -227,7 +253,7 @@ export default function LoginPage() {
               <div className="w-10 h-7 rounded-md overflow-hidden shadow-sm shadow-black/10 shrink-0">
                 <VietnamFlagIcon className="w-full h-full" />
               </div>
-              <div className="brand-badge" title="Hoàn tiền cùng Phương Thảo">
+              <div className="brand-badge" title="Hoàn tiền cùng Dâu Tây">
                 <img src="/brand/logo-shield.png" alt="Hoàn tiền mua hàng" />
               </div>
             </div>
@@ -264,7 +290,7 @@ export default function LoginPage() {
                   Cách lấy My ID:
                 </p>
                 <p className="flex flex-wrap items-center gap-1.5">
-                  <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[#8b5fbf] text-white text-[9px] font-bold shrink-0">1</span>
+                  <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[#e0609c] text-white text-[9px] font-bold shrink-0">1</span>
                   <span className="font-bold text-ink">Sao chép câu lệnh</span>
                   <span className="inline-flex items-center gap-1 font-mono-num font-bold bg-danger/15 text-danger px-1.5 py-0.5 rounded-md">
                     {MYID_COMMAND}
@@ -280,7 +306,7 @@ export default function LoginPage() {
                   {copied && <span className="text-highlight font-bold">Đã sao chép!</span>}
                 </p>
                 <p className="flex flex-wrap items-center gap-1.5">
-                  <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[#a97fd1] text-white text-[9px] font-bold shrink-0">2</span>
+                  <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[#ee85b3] text-white text-[9px] font-bold shrink-0">2</span>
                   <span className="font-bold text-ink">Gửi vào nhóm để lấy My ID</span>
                   <a
                     href={ZALO_GROUP_LINK}
@@ -293,7 +319,7 @@ export default function LoginPage() {
                   </a>
                 </p>
                 <p className="flex flex-wrap items-center gap-1.5">
-                  <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[#6f3fae] text-white text-[9px] font-bold shrink-0">3</span>
+                  <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-[#c2185b] text-white text-[9px] font-bold shrink-0">3</span>
                   <span className="font-bold text-ink">Sao chép ID bot gửi cho bạn và điền vào ô My ID.</span>
                 </p>
               </div>
@@ -360,12 +386,12 @@ export default function LoginPage() {
                 <p className="text-[11px] text-muted">
                   Liên hệ hỗ trợ:{" "}
                   <a
-                    href="https://zalo.me/0902431867"
+                    href="https://zalo.me/0964763209"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[#3f95b0] font-bold hover:underline"
                   >
-                    Zalo (0902431867)
+                    Zalo (0964763209)
                   </a>
                 </p>
               </div>

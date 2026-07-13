@@ -39,13 +39,13 @@ html {
 }
 
 body {
-  background: #f7f1ff;
+  background: #fff5f9;
   color: var(--cream);
   overscroll-behavior-y: none;
   background-image:
     radial-gradient(ellipse 900px 520px at 100% -8%, rgba(212, 175, 55, 0.14), transparent 60%),
-    radial-gradient(ellipse 700px 460px at -5% 105%, rgba(102, 52, 168, 0.12), transparent 55%),
-    linear-gradient(160deg, #f7f1ff 0%, #e7d3fb 45%, #d1abf0 100%);
+    radial-gradient(ellipse 700px 460px at -5% 105%, rgba(224, 96, 156, 0.12), transparent 55%),
+    linear-gradient(160deg, #fff5f9 0%, #fbdce8 45%, #f8b8d6 100%);
   background-attachment: fixed;
 }
 
@@ -111,42 +111,41 @@ body {
    không còn bộ chọn 7 màu.
    ───────────────────────────────────────────────────────────── */
 .login-pink {
-  --ink: #2e1c47;
-  --surface: #faf7ff;
+  --ink: #4a1f38;
+  --surface: #fff6fa;
   --panel: #fffdff;
-  --panel-2: #ece0fb;
-  --border: #d3b8ee;
-  --gold: #8b5fbf;
-  --gold-soft: #a97fd1;
-  --mint: #c9a6f2;
-  --cream: #2e1c47;
-  --muted: #8b7a9e;
+  --panel-2: #fbe2ec;
+  --border: #f0b8d3;
+  --gold: #e0609c;
+  --gold-soft: #ee85b3;
+  --mint: #f7b8d4;
+  --cream: #4a1f38;
+  --muted: #a37e93;
   --danger: #d94f70;
-  --highlight: #6634a8;
+  --highlight: #c2185b;
 
-  /* Bảng nền tím sang trọng hơn: tím sâu pha ánh vàng nhẹ ở góc trên, thay
-     vì tím pastel phẳng như trước. */
-  --bg-grad-1: #f7f1ff;
-  --bg-grad-2: #e7d3fb;
-  --bg-grad-3: #d1abf0;
+  /* Bảng nền hồng nhạt sáng, tươi tắn — dịu mắt, sang trọng. */
+  --bg-grad-1: #fff5f9;
+  --bg-grad-2: #fbdce8;
+  --bg-grad-3: #f8b8d6;
 
   background-image:
     radial-gradient(ellipse 900px 520px at 100% -8%, rgba(212, 175, 55, 0.14), transparent 60%),
-    radial-gradient(ellipse 700px 460px at -5% 105%, rgba(102, 52, 168, 0.12), transparent 55%),
+    radial-gradient(ellipse 700px 460px at -5% 105%, rgba(224, 96, 156, 0.12), transparent 55%),
     linear-gradient(160deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 45%, var(--bg-grad-3) 100%);
   background-attachment: fixed;
   color: var(--cream);
 }
 
 .login-pink .field-important {
-  box-shadow: 0 0 0 3px rgba(111, 63, 174, 0.10);
+  box-shadow: 0 0 0 3px rgba(224, 96, 156, 0.10);
 }
 .login-pink .field-important:focus {
-  box-shadow: 0 0 0 3px rgba(111, 63, 174, 0.18);
+  box-shadow: 0 0 0 3px rgba(224, 96, 156, 0.18);
 }
 .login-pink .ticket-notch::before,
 .login-pink .ticket-notch::after {
-  background: #f1e6ff;
+  background: #ffe3ee;
 }
 
 /* Nhãn logo/avatar thương hiệu — thay cho bộ chọn 7 màu cũ */
@@ -155,7 +154,7 @@ body {
   height: 44px;
   border-radius: 999px;
   overflow: hidden;
-  box-shadow: 0 0 0 2px #fff, 0 2px 8px rgba(111, 63, 174, 0.25);
+  box-shadow: 0 0 0 2px #fff, 0 2px 8px rgba(224, 96, 156, 0.25);
   flex-shrink: 0;
 }
 .brand-badge img {
@@ -179,7 +178,7 @@ body {
   );
   background-size: 300% 100%;
   animation: rainbow-chase 5s linear infinite;
-  box-shadow: 0 4px 18px rgba(111, 63, 174, 0.25);
+  box-shadow: 0 4px 18px rgba(224, 96, 156, 0.25);
 }
 .rainbow-frame-inner {
   border-radius: 15px;

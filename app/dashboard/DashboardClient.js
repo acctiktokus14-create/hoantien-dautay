@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { DEFAULT_THEME, getStoredTheme } from "../../lib/theme";
 
 // Link nhóm Zalo nơi khách nhận My ID — dùng để khách gửi lệnh rút tiền vào nhóm.
-const ZALO_GROUP_LINK = "https://zalo.me/g/msd7vvhjcwiffr3tyqor";
+const ZALO_GROUP_LINK = "https://zalo.me/g/9z3rc8twl2d8oss7ttn3";
 
 const PAGE_SIZE = 10;
 const PAGE_WINDOW = 10;
@@ -21,7 +21,7 @@ function classifyStatus(trangThai) {
 
 // Bảng màu dùng chung cho bộ lọc đơn hàng + huy hiệu trạng thái từng đơn.
 const STATUS_COLORS = {
-  purple: { solid: "#8b5fbf", soft: "rgba(139,95,191,0.14)" },
+  purple: { solid: "#e0609c", soft: "rgba(224,96,156,0.14)" },
   green: { solid: "#22c55e", soft: "rgba(34,197,94,0.14)" },
   yellow: { solid: "#eab308", soft: "rgba(234,179,8,0.16)" },
   red: { solid: "#ef4444", soft: "rgba(239,68,68,0.14)" },
@@ -37,7 +37,7 @@ function statusMeta(trangThai) {
 // Bộ lọc trạng thái đơn hàng hiển thị phía trên danh sách (Tất cả / Hoàn
 // thành / Chờ xử lý / Đã hủy), mỗi nút giữ đúng tông màu của trạng thái đó.
 const STATUS_FILTERS = [
-  { key: "all", label: "Tất cả", solid: "#8b5fbf", soft: STATUS_COLORS.purple.soft },
+  { key: "all", label: "Tất cả", solid: "#e0609c", soft: STATUS_COLORS.purple.soft },
   { key: "completed", label: "Hoàn thành", solid: "#22c55e", soft: STATUS_COLORS.green.soft },
   { key: "pending", label: "Chờ xử lý", solid: "#eab308", soft: STATUS_COLORS.yellow.soft },
   { key: "cancelled", label: "Đã hủy", solid: "#ef4444", soft: STATUS_COLORS.red.soft },
@@ -56,9 +56,9 @@ function commissionBreakdown(grossCommission) {
 // Hoa hồng: đỏ san hô, Sau thuế: tím, Hoa hồng thực nhận: xanh lá sáng (theo ảnh mẫu).
 // Khung (border) của cả 3 ô dùng chung 1 màu tím nhạt theo tông nền của app.
 const AMOUNT_COLORS = {
-  gross: { solid: "#e0524f", border: "rgba(139,95,191,0.30)", soft: "rgba(139,95,191,0.05)" },
-  afterTax: { solid: "#a855f7", border: "rgba(139,95,191,0.30)", soft: "rgba(139,95,191,0.05)" },
-  final80: { solid: "#0ecb81", border: "rgba(139,95,191,0.30)", soft: "rgba(139,95,191,0.05)" },
+  gross: { solid: "#e0524f", border: "rgba(224,96,156,0.30)", soft: "rgba(224,96,156,0.05)" },
+  afterTax: { solid: "#e0609c", border: "rgba(224,96,156,0.30)", soft: "rgba(224,96,156,0.05)" },
+  final80: { solid: "#0ecb81", border: "rgba(224,96,156,0.30)", soft: "rgba(224,96,156,0.05)" },
 };
 
 // Màu xanh lá cây sáng dùng chung cho số tiền "Hoa hồng ước tính" ở mọi nơi.
@@ -679,7 +679,7 @@ export default function DashboardClient({ user, initialOrders, initialWallet }) 
       <header className="border-b border-border">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           <div className="flex flex-col items-start gap-0.5">
-            <span className="font-display font-semibold text-sm tracking-tight">Hoàn Tiền Cùng Phương Thảo 😘</span>
+            <span className="font-display font-semibold text-sm tracking-tight">Hoàn Tiền Cùng Dâu Tây 🍓</span>
           </div>
           <div className="flex items-center gap-2 sm:gap-3">
             <div className="flex items-center gap-1.5 sm:gap-2 bg-panel border border-border rounded-full pl-2.5 sm:pl-3 pr-1 py-1">
@@ -830,7 +830,7 @@ export default function DashboardClient({ user, initialOrders, initialWallet }) 
                 <button
                   type="submit"
                   disabled={converting}
-                  className={`flex-1 sm:flex-none sm:w-auto bg-[#8b5fbf] hover:bg-[#9d72d1] text-white font-bold rounded-lg px-5 py-2.5 text-sm shadow-md shadow-[#8b5fbf]/40 transition-all disabled:opacity-60 disabled:animate-none cursor-pointer ${
+                  className={`flex-1 sm:flex-none sm:w-auto bg-[#e0609c] hover:bg-[#ea7bae] text-white font-bold rounded-lg px-5 py-2.5 text-sm shadow-md shadow-[#e0609c]/40 transition-all disabled:opacity-60 disabled:animate-none cursor-pointer ${
                     batchResults.length === 0 ? "animate-pulse" : "opacity-30"
                   }`}
                 >
@@ -1605,7 +1605,7 @@ export default function DashboardClient({ user, initialOrders, initialWallet }) 
                   </div>
                   <div className="border border-border rounded-xl px-3.5 py-3">
                     <p className="text-xs text-muted mb-1">🟣 Đang chờ xử lý</p>
-                    <p className="font-mono-num text-lg font-bold text-[#a855f7]">
+                    <p className="font-mono-num text-lg font-bold text-[#e0609c]">
                       {formatVnd(commissionBreakdown(wallet.dangCho).final80)}
                     </p>
                   </div>
@@ -1643,12 +1643,12 @@ export default function DashboardClient({ user, initialOrders, initialWallet }) 
           <p className="text-[11px] text-muted">
             Liên hệ hỗ trợ:{" "}
             <a
-              href="https://zalo.me/0902431867"
+              href="https://zalo.me/0964763209"
               target="_blank"
               rel="noopener noreferrer"
               className="text-[#3f95b0] font-bold hover:underline"
             >
-              Zalo (0902431867)
+              Zalo (0964763209)
             </a>
           </p>
         </div>
