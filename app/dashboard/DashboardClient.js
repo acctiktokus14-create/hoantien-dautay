@@ -1605,7 +1605,7 @@ export default function DashboardClient({ user, initialOrders, initialWallet }) 
                   </div>
                   <div className="border border-border rounded-xl px-3.5 py-3">
                     <p className="text-xs text-muted mb-1">🟣 Đang chờ xử lý</p>
-                    <p className="font-mono-num text-lg font-bold text-[#e0609c]">
+                    <p className="font-mono-num text-lg font-bold text-[#a855f7]">
                       {formatVnd(commissionBreakdown(wallet.dangCho).final80)}
                     </p>
                   </div>
