@@ -43,10 +43,10 @@ const STATUS_FILTERS = [
   { key: "cancelled", label: "Đã hủy", solid: "#ef4444", soft: STATUS_COLORS.red.soft },
 ];
 
-// Chiết khấu hiển thị theo từng đơn: hoa hồng gốc -> trừ thuế 11% -> còn 80% hoa hồng thực nhận.
+// Chiết khấu hiển thị theo từng đơn: hoa hồng gốc -> trừ thuế 10% -> còn 80% hoa hồng thực nhận.
 function commissionBreakdown(grossCommission) {
   const gross = Number(grossCommission) || 0;
-  const afterTax = Math.round(gross * 0.89);
+  const afterTax = Math.round(gross * 0.9);
   const final80 = Math.round(afterTax * 0.8);
   return { gross, afterTax, final80 };
 }
