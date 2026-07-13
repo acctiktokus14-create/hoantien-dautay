@@ -1,0 +1,234 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #0b1f1c;
+  --surface: #12302b;
+  --panel: #17403a;
+  --panel-2: #1c4b43;
+  --border: #2a5b51;
+  --gold: #e7b84b;
+  --gold-soft: #f0cd7d;
+  --mint: #49d9a6;
+  --cream: #f3efe4;
+  --muted: #93aba1;
+  --danger: #e77a5f;
+  --highlight: var(--gold);
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-border: var(--border);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-mint: var(--mint);
+  --color-cream: var(--cream);
+  --color-muted: var(--muted);
+  --color-danger: var(--danger);
+  --color-highlight: var(--highlight);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
+}
+
+html {
+  background: #f7f1ff;
+  overscroll-behavior-y: none;
+}
+
+body {
+  background: #f7f1ff;
+  color: var(--cream);
+  overscroll-behavior-y: none;
+  background-image:
+    radial-gradient(ellipse 900px 520px at 100% -8%, rgba(212, 175, 55, 0.14), transparent 60%),
+    radial-gradient(ellipse 700px 460px at -5% 105%, rgba(102, 52, 168, 0.12), transparent 55%),
+    linear-gradient(160deg, #f7f1ff 0%, #e7d3fb 45%, #d1abf0 100%);
+  background-attachment: fixed;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+.font-mono-num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Đường viền răng cưa kiểu vé/biên lai, dùng cho thẻ ví tiền */
+.ticket-notch {
+  position: relative;
+}
+.ticket-notch::before,
+.ticket-notch::after {
+  content: "";
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background: var(--ink);
+  border-radius: 999px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.ticket-notch::before {
+  left: -11px;
+}
+.ticket-notch::after {
+  right: -11px;
+}
+
+.ticket-dashed {
+  border-top: 2px dashed var(--border);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 999px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Bảng màu Tím Nhạt (nhẹ mắt, dịu) — dùng chung cho cả trang
+   đăng nhập lẫn dashboard. Đây là bảng màu duy nhất của app,
+   không còn bộ chọn 7 màu.
+   ───────────────────────────────────────────────────────────── */
+.login-pink {
+  --ink: #2e1c47;
+  --surface: #faf7ff;
+  --panel: #fffdff;
+  --panel-2: #ece0fb;
+  --border: #d3b8ee;
+  --gold: #8b5fbf;
+  --gold-soft: #a97fd1;
+  --mint: #c9a6f2;
+  --cream: #2e1c47;
+  --muted: #8b7a9e;
+  --danger: #d94f70;
+  --highlight: #6634a8;
+
+  /* Bảng nền tím sang trọng hơn: tím sâu pha ánh vàng nhẹ ở góc trên, thay
+     vì tím pastel phẳng như trước. */
+  --bg-grad-1: #f7f1ff;
+  --bg-grad-2: #e7d3fb;
+  --bg-grad-3: #d1abf0;
+
+  background-image:
+    radial-gradient(ellipse 900px 520px at 100% -8%, rgba(212, 175, 55, 0.14), transparent 60%),
+    radial-gradient(ellipse 700px 460px at -5% 105%, rgba(102, 52, 168, 0.12), transparent 55%),
+    linear-gradient(160deg, var(--bg-grad-1) 0%, var(--bg-grad-2) 45%, var(--bg-grad-3) 100%);
+  background-attachment: fixed;
+  color: var(--cream);
+}
+
+.login-pink .field-important {
+  box-shadow: 0 0 0 3px rgba(111, 63, 174, 0.10);
+}
+.login-pink .field-important:focus {
+  box-shadow: 0 0 0 3px rgba(111, 63, 174, 0.18);
+}
+.login-pink .ticket-notch::before,
+.login-pink .ticket-notch::after {
+  background: #f1e6ff;
+}
+
+/* Nhãn logo/avatar thương hiệu — thay cho bộ chọn 7 màu cũ */
+.brand-badge {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: 0 0 0 2px #fff, 0 2px 8px rgba(111, 63, 174, 0.25);
+  flex-shrink: 0;
+}
+.brand-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Khung đèn chạy 6 sắc cầu vồng — dùng cho các tiêu đề/khối
+   muốn nhấn mạnh, hiệu ứng viền sáng di chuyển liên tục.
+   ───────────────────────────────────────────────────────────── */
+.rainbow-frame {
+  position: relative;
+  padding: 3px;
+  border-radius: 18px;
+  background: linear-gradient(
+    90deg,
+    #ff4d4d, #ff9d3b, #ffe93b, #4dd67a, #3bb8ff, #8a5cff, #ff4d4d
+  );
+  background-size: 300% 100%;
+  animation: rainbow-chase 5s linear infinite;
+  box-shadow: 0 4px 18px rgba(111, 63, 174, 0.25);
+}
+.rainbow-frame-inner {
+  border-radius: 15px;
+  background: var(--panel);
+  height: 100%;
+  width: 100%;
+}
+@keyframes rainbow-chase {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+
+/* Khung nhẹ, dịu mắt — dùng cho những dòng chữ chào cần đóng khung nhẹ */
+.soft-frame {
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  border-radius: 14px;
+}
+
+/* Nút đăng nhập xanh lá đậm, nhấp nháy nhẹ dịu mắt */
+.btn-blink-green {
+  animation: btn-blink-glow 2.4s ease-in-out infinite;
+}
+@keyframes btn-blink-glow {
+  0%, 100% { box-shadow: 0 4px 14px rgba(31, 174, 102, 0.4); filter: brightness(1); }
+  50% { box-shadow: 0 4px 24px rgba(34, 197, 94, 0.75); filter: brightness(1.1); }
+}
+
+/* Khung/ô nhấn mạnh số tiền quan trọng (vd "Hoa hồng thực nhận") — vàng nhạt
+   sang xanh lá nhạt, tĩnh, không chạy màu, không nhấp nháy, dịu mắt. */
+.rainbow-cell {
+  position: relative;
+  padding: 2px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ffe9a8, #b7ecc6);
+}
+.rainbow-cell-inner {
+  border-radius: 8px;
+  background: var(--surface);
+  height: 100%;
+  width: 100%;
+}
+
+/* Khung xanh lá nhạt sáng, nhấp nháy nhẹ dịu mắt — dùng để nhấn mạnh thông
+   báo "Đã tạo link hoàn tiền thành công" bên dưới nút tạo link. */
+.success-glow-green {
+  animation: success-glow 1.8s ease-in-out infinite;
+}
+@keyframes success-glow {
+  0%, 100% { background-color: rgba(34, 197, 94, 0.10); box-shadow: 0 0 0 rgba(34, 197, 94, 0); }
+  50% { background-color: rgba(34, 197, 94, 0.22); box-shadow: 0 0 12px rgba(34, 197, 94, 0.25); }
+}
