@@ -231,3 +231,309 @@ body {
   0%, 100% { background-color: rgba(34, 197, 94, 0.10); box-shadow: 0 0 0 rgba(34, 197, 94, 0); }
   50% { background-color: rgba(34, 197, 94, 0.22); box-shadow: 0 0 12px rgba(34, 197, 94, 0.25); }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Khung tên khách hàng (vd "Hello Bích") — viền cam tươi, nền
+   trắng sáng, chữ hồng nổi bật, tĩnh (không nhấp nháy/chạy sáng).
+   ───────────────────────────────────────────────────────────── */
+.vip-name-frame {
+  position: relative;
+  padding: 2px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, #ffb066 0%, #ff7a1a 50%, #ffb066 100%);
+  box-shadow: 0 8px 20px rgba(255, 122, 26, 0.28);
+}
+.vip-name-frame-inner {
+  border-radius: 16px;
+  background: #ffffff;
+  height: 100%;
+  width: 100%;
+  padding: 0.7rem 1.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+.vip-name-text {
+  font-family: var(--font-elegant), serif;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #ff2f8f;
+}
+.vip-name-input {
+  font-family: var(--font-elegant), serif;
+  font-style: normal;
+  font-weight: 700;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 47, 143, 0.4);
+  color: #ff2f8f;
+  outline: none;
+}
+.vip-name-input:focus {
+  border-bottom-color: #ff2f8f;
+}
+.vip-edit-btn-outside {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--panel);
+  color: #e0609c;
+  border: 1.5px solid var(--border);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(224, 96, 156, 0.15);
+  transition: all 0.15s ease;
+}
+.vip-edit-btn-outside:hover {
+  background: var(--panel-2);
+  transform: scale(1.06);
+}
+
+/* Khung 1 sản phẩm đã tạo link — viền bo tròn mềm mại, có đổ bóng nhẹ và
+   viền màu tím nhạt thay vì viền xám đơn điệu, đẹp mắt hơn. */
+.product-card {
+  border-radius: 18px;
+  border: 1.5px solid #f3c6de;
+  background: var(--surface);
+  box-shadow: 0 4px 16px rgba(224, 96, 156, 0.10);
+}
+
+/* Khung chung bao ngoài danh sách nhiều sản phẩm khi tạo nhiều link cùng
+   lúc — tách biệt trực quan với khối bên trên. */
+.product-list-frame {
+  border-radius: 20px;
+  border: 1.5px solid #f3c6de;
+  background: linear-gradient(180deg, #fff0f7, #fff8fb);
+  padding: 14px;
+}
+
+/* Khung nhỏ màu xanh nhạt bọc quanh mọi số tiền/hoa hồng hiển thị trong
+   app (hoa hồng ước tính, hoa hồng, sau thuế, số dư ví...) — đồng bộ 1
+   kiểu nhấn mạnh số tiền ở mọi nơi. */
+.money-chip {
+  display: inline-flex;
+  align-items: center;
+  background: #e3f3ff;
+  border: 1px solid #bfe3fb;
+  border-radius: 8px;
+  padding: 1px 8px;
+}
+
+/* Nền mờ dùng cho các khối "dính" (sticky) khi cuộn trang — VD: thanh trên
+   cùng và khung tên khách hàng — để chữ/nội dung cuộn bên dưới không bị
+   chồng lên, đồng thời không bị "trôi" mất khỏi màn hình. */
+.sticky-blur-bg {
+  background: rgba(255, 245, 249, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+/* Dòng cảnh báo "⚠️ Lưu ý quan trọng để được hoàn tiền" — nền vàng nhạt sáng,
+   không viền. Tiêu đề + 5 gạch đầu dòng nằm chung 1 khối (không tách ô). */
+.notice-box {
+  background: #fff4b8;
+  border: 1.5px solid #f5c944;
+  border-radius: 14px;
+  overflow: hidden;
+}
+.notice-box-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 9px 14px;
+  background: transparent;
+  border: none;
+  text-align: center;
+}
+/* Trạng thái chưa mở: không khung nền, chỉ là dòng chữ trơn — khung nền
+   vàng chỉ xuất hiện khi bấm mở rộng (xem .notice-box ở trên). */
+.notice-box-header-plain {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 4px 2px;
+  background: transparent;
+  border: none;
+  text-align: center;
+}
+.notice-box-body {
+  padding: 0 14px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Step-tracker riêng "Dán Link → Mua Ngay → Đặt Hàng → Hoàn Tiền"
+   — nền hồng, 4 khung tròn + chữ màu đỏ, có đèn chạy trên thanh nối
+   các nút, khi đèn chạy tới nút Hoàn Tiền thì bắn pháo hoa tung tóe.
+   Hiển thị trước khi tạo link, tự ẩn sau khi tạo link thành công.
+   ───────────────────────────────────────────────────────────── */
+.step-tracker-frame {
+  background: linear-gradient(180deg, #ffd7e6, #ffc2da);
+  border: 1.5px solid #ffabc9;
+  border-radius: 18px;
+  padding: 20px 14px 14px;
+}
+.step-tracker-track {
+  position: relative;
+}
+.step-tracker-row {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.step-tracker-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  width: 25%;
+}
+.step-tracker-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: #fff0f5;
+  border: 2.5px solid #d6362f;
+  color: #d6362f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(214, 54, 47, 0.18);
+}
+.step-tracker-circle-final {
+  animation: step-tracker-final-pulse 3.6s ease-in-out infinite;
+}
+@keyframes step-tracker-final-pulse {
+  0%, 74% { box-shadow: 0 2px 6px rgba(214, 54, 47, 0.18); }
+  82% { box-shadow: 0 0 0 8px rgba(214, 54, 47, 0.28), 0 0 22px 4px rgba(255, 196, 0, 0.7); }
+  100% { box-shadow: 0 2px 6px rgba(214, 54, 47, 0.18); }
+}
+.step-tracker-label {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: #d6362f;
+  text-align: center;
+  white-space: nowrap;
+}
+@media (min-width: 640px) {
+  .step-tracker-label {
+    font-size: 13px;
+  }
+  .step-tracker-circle {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+/* Thanh nối ngang giữa 4 khung tròn, chạy qua tâm các vòng tròn */
+.step-tracker-line {
+  position: absolute;
+  z-index: 1;
+  top: 22px;
+  left: 12.5%;
+  right: 12.5%;
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(214, 54, 47, 0.28);
+}
+@media (min-width: 640px) {
+  .step-tracker-line {
+    top: 25px;
+  }
+}
+
+/* Đèn chạy dọc theo thanh nối, từ nút "Dán Link" tới nút "Hoàn Tiền" */
+.step-tracker-runner {
+  position: absolute;
+  z-index: 1;
+  top: 17px;
+  left: 12.5%;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-radius: 999px;
+  background: radial-gradient(circle, #fff6e0 0%, #ffc400 45%, #ff5252 100%);
+  box-shadow: 0 0 10px 3px rgba(255, 82, 82, 0.75);
+  animation: step-tracker-runner-move 3.6s linear infinite;
+}
+@media (min-width: 640px) {
+  .step-tracker-runner {
+    top: 20px;
+  }
+}
+@keyframes step-tracker-runner-move {
+  0% { left: 12.5%; opacity: 1; }
+  76% { left: 87.5%; opacity: 1; }
+  80% { opacity: 0; }
+  100% { opacity: 0; left: 12.5%; }
+}
+
+/* Pháo hoa bắn tung tóe quanh nút "Hoàn Tiền" ngay khi đèn chạy tới nơi */
+.step-tracker-fireworks {
+  position: absolute;
+  z-index: 3;
+  top: 22px;
+  left: 87.5%;
+  width: 0;
+  height: 0;
+}
+@media (min-width: 640px) {
+  .step-tracker-fireworks {
+    top: 25px;
+  }
+}
+.step-tracker-spark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 999px;
+  opacity: 0;
+  animation: step-tracker-spark-burst 3.6s ease-out infinite;
+}
+.step-tracker-spark-0 { background: #ff5252; --tx: 0px; --ty: -34px; }
+.step-tracker-spark-1 { background: #ffc400; --tx: 24px; --ty: -24px; }
+.step-tracker-spark-2 { background: #ff8a3d; --tx: 34px; --ty: 0px; }
+.step-tracker-spark-3 { background: #ff4d8d; --tx: 24px; --ty: 24px; }
+.step-tracker-spark-4 { background: #ffe93b; --tx: 0px; --ty: 34px; }
+.step-tracker-spark-5 { background: #ff5252; --tx: -24px; --ty: 24px; }
+.step-tracker-spark-6 { background: #ffc400; --tx: -34px; --ty: 0px; }
+.step-tracker-spark-7 { background: #ff8a3d; --tx: -24px; --ty: -24px; }
+@keyframes step-tracker-spark-burst {
+  0%, 75% { opacity: 0; transform: translate(0, 0) scale(0.3); }
+  80% { opacity: 1; transform: translate(0, 0) scale(1); }
+  95% { opacity: 1; transform: translate(var(--tx), var(--ty)) scale(1); }
+  100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.4); }
+}
+
+/* Avatar bài hát ở tab Music: ảnh tròn xoay khi phát, viền tiến trình xoay ngược chiều. */
+.music-avatar-art {
+  animation: music-avatar-spin 9s linear infinite;
+  animation-play-state: paused;
+}
+.music-avatar-art.is-playing {
+  animation-play-state: running;
+}
+@keyframes music-avatar-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.music-avatar-ring {
+  animation: music-avatar-spin 9s linear infinite reverse;
+  animation-play-state: paused;
+}
+.music-avatar-ring.is-playing {
+  animation-play-state: running;
+}

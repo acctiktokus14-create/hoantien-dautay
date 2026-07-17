@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/lib/getCurrentUser";
 import { getSupabaseAdmin } from "@/lib/supabase";
 import { getAllBotData } from "@/lib/botData";
-import { calcVitien, listDonHang } from "@/lib/botLogic";
+import { calcVitien, listDonHang, buildLeaderboard } from "@/lib/botLogic";
 import DashboardClient from "./DashboardClient";
 
 async function loadDashboardData(myId) {
@@ -17,10 +17,14 @@ async function loadDashboardData(myId) {
     getAllBotData(),
   ]);
 
-  // My ID trên hoantien-dautay CHÍNH LÀ sub_id trong dữ liệu bot (donhang/vitien/da_nhan),
+  // My ID trên hoan-vi-web CHÍNH LÀ sub_id trong dữ liệu bot (donhang/vitien/da_nhan),
   // vì My ID được gắn thẳng làm af_sub_id/sub_id khi chuyển link Shopee.
   const wallet = calcVitien(botData.vitien, botData.danhan, myId);
   const orders = listDonHang(botData.donhang, myId);
+
+  // BXH: top 100 sub_id theo tổng tiền (đã trừ 11% + nhân 80%), giảm dần.
+  // Tính hẳn ở server để sub_id của người khác KHÔNG BAO GIỜ gửi ra client.
+  const { leaderboard, myRank } = buildLeaderboard(botData.vitien, botData.danhan, myId, 100);
 
   return {
     user: user
@@ -32,6 +36,8 @@ async function loadDashboardData(myId) {
       : null,
     wallet, // null nếu chưa có dữ liệu ví cho My ID này
     orders,
+    leaderboard,
+    myRank,
   };
 }
 
@@ -39,8 +45,16 @@ export default async function DashboardPage() {
   const currentUser = await getCurrentUser();
   if (!currentUser) redirect("/login");
 
-  const { user, wallet, orders } = await loadDashboardData(currentUser.myId);
+  const { user, wallet, orders, leaderboard, myRank } = await loadDashboardData(currentUser.myId);
   if (!user) redirect("/login");
 
-  return <DashboardClient user={user} initialOrders={orders} initialWallet={wallet} />;
+  return (
+    <DashboardClient
+      user={user}
+      initialOrders={orders}
+      initialWallet={wallet}
+      initialLeaderboard={leaderboard}
+      initialMyRank={myRank}
+    />
+  );
 }
