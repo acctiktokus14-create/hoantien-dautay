@@ -48,10 +48,13 @@ export default function AddToHomeScreenModal() {
               Cách thêm web vào màn hình chính trên điện thoại
             </h2>
 
-            <img
-              src="/add-to-home-screen-guide.png"
-              alt="Hướng dẫn thêm web vào màn hình chính"
+            <video
+              src="/add-to-home-screen-guide.mp4"
               className="mx-auto w-full rounded-2xl object-contain"
+              autoPlay
+              loop
+              muted
+              playsInline
             />
           </div>
 
