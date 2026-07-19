@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { DEFAULT_THEME, getStoredTheme } from "../../lib/theme";
+import VideoGuideModal from "../components/VideoGuideModal";
 
 // Link nhóm Zalo nơi khách nhận My ID — dùng để khách gửi lệnh rút tiền vào nhóm.
 const ZALO_GROUP_LINK = "https://zalo.me/g/9z3rc8twl2d8oss7ttn3";
@@ -824,6 +825,7 @@ export default function DashboardClient({
   const [myRank] = useState(initialMyRank || null);
   const [shopeeUrl, setShopeeUrl] = useState("");
   const [createMode, setCreateMode] = useState("single"); // "single" | "multi"
+  const [showVideoGuide, setShowVideoGuide] = useState(false);
   const [multiUrlsText, setMultiUrlsText] = useState("");
   const [batchResults, setBatchResults] = useState([]); // kết quả của lần tạo link gần nhất (1 hoặc nhiều link)
   const [convertError, setConvertError] = useState("");
@@ -1536,6 +1538,13 @@ export default function DashboardClient({
                   }`}
                 >
                   🎀 Tạo 1 link
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setShowVideoGuide(true)}
+                  className="px-1 text-[11px] sm:text-xs font-bold text-red-500 underline underline-offset-2 hover:text-red-600 transition-colors cursor-pointer shrink-0"
+                >
+                  Video hướng dẫn
                 </button>
                 <button
                   type="button"
@@ -2810,6 +2819,12 @@ export default function DashboardClient({
         }}
         className="hidden"
       />
+
+      {/* Modal video hướng dẫn tạo link hoàn tiền — mở khi bấm chữ đỏ
+          "Video hướng dẫn" giữa 2 nút chọn chế độ ở trên. */}
+      {showVideoGuide && (
+        <VideoGuideModal onClose={() => setShowVideoGuide(false)} />
+      )}
     </main>
   );
 }
