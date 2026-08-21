@@ -760,6 +760,11 @@ const MUSIC_TRACKS = [
 // Tối đa 10 link được tạo trong 1 lần dùng chế độ "Tạo nhiều link".
 const MAX_MULTI_LINKS = 10;
 
+// Công tắc tắt/mở chức năng "Tạo link hoàn tiền". Khi false: form vẫn hiển thị
+// nhưng nút tạo link bị khoá và hiện thông báo tạm ngưng, không gọi API.
+const LINK_CREATION_ENABLED = false;
+const LINK_CREATION_DISABLED_MESSAGE = "Tính năng tạo link hoàn tiền đang tạm ngưng.";
+
 // Lịch sử link tạo ra được lưu ở máy khách (localStorage), tách riêng theo My ID,
 // vì hệ thống hiện chưa có bảng lưu link ở server — không ảnh hưởng các bảng dữ liệu khác.
 function linkHistoryStorageKey(myId) {
@@ -1225,6 +1230,11 @@ export default function DashboardClient({
     setConvertError("");
     setBatchResults([]);
 
+    if (!LINK_CREATION_ENABLED) {
+      setConvertError(LINK_CREATION_DISABLED_MESSAGE);
+      return;
+    }
+
     let urls = [];
     if (createMode === "single") {
       const single = shopeeUrl.trim();
@@ -1559,6 +1569,12 @@ export default function DashboardClient({
                 </button>
               </div>
 
+              {!LINK_CREATION_ENABLED && (
+                <p className="text-sm text-danger bg-danger/10 border border-danger/30 rounded-lg px-3 py-2 mb-3">
+                  {LINK_CREATION_DISABLED_MESSAGE}
+                </p>
+              )}
+
               <form onSubmit={handleCreateLinks} className="space-y-3">
                 {createMode === "single" ? (
                   <div className="relative">
@@ -1611,12 +1627,14 @@ export default function DashboardClient({
                 <div className="flex items-center gap-2">
                   <button
                     type="submit"
-                    disabled={converting}
-                    className={`flex-1 sm:flex-none sm:w-auto bg-[#e0609c] hover:bg-[#ee85b3] text-white font-bold rounded-lg px-5 py-2.5 text-sm shadow-md shadow-[#e0609c]/40 transition-all disabled:opacity-60 disabled:animate-none cursor-pointer ${
-                      batchResults.length === 0 ? "animate-pulse" : "opacity-30"
+                    disabled={converting || !LINK_CREATION_ENABLED}
+                    className={`flex-1 sm:flex-none sm:w-auto bg-[#e0609c] hover:bg-[#ee85b3] text-white font-bold rounded-lg px-5 py-2.5 text-sm shadow-md shadow-[#e0609c]/40 transition-all disabled:opacity-60 disabled:animate-none disabled:cursor-not-allowed cursor-pointer ${
+                      !LINK_CREATION_ENABLED ? "" : batchResults.length === 0 ? "animate-pulse" : "opacity-30"
                     }`}
                   >
-                    {converting
+                    {!LINK_CREATION_ENABLED
+                      ? "Tính năng tạm ngưng"
+                      : converting
                       ? "Đang tạo..."
                       : createMode === "multi" && multiUrlsCount > 1
                       ? `Tạo ${Math.min(multiUrlsCount, MAX_MULTI_LINKS)} link hoàn tiền`
